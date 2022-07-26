@@ -1,7 +1,4 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -17,7 +14,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// </summary>
         public ActivitiValueModel()
         {
-            ElementName = _elementName;
+            this.ElementName = _elementName;
         }
 
         /// <summary>
@@ -27,8 +24,8 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="name">名称</param>
         public ActivitiValueModel(string id, string name) : this()
         {
-            Id = id;
-            Name = name;
+            this.Id = id;
+            this.Name = name;
         }
 
         /// <summary>

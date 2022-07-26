@@ -1,7 +1,4 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -18,18 +15,18 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// </summary>
         public ConditionExpressionModel()
         {
-            ElementName = _elementName;
-            CData = true;
-            Type = _defaultType;
+            this.ElementName = _elementName;
+            this.CData = true;
+            this.Type = _defaultType;
         }
 
         /// <summary>
         /// 构造方法
         /// </summary>
-        /// <param name="innerText">内部文本</param>
-        public ConditionExpressionModel(string innerText) : this()
+        /// <param name="conditionExpression">表达式内容</param>
+        public ConditionExpressionModel(string conditionExpression) : this()
         {
-            InnerText = innerText;
+            this.InnerText = conditionExpression;
         }
 
         /// <summary>

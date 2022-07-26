@@ -1,8 +1,6 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Extensions;
 using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
-using System;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
 {
@@ -16,11 +14,11 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// <summary>
         /// 构造方法
         /// </summary>
-        public UserTaskModel()
+        public UserTaskModel() 
         {
-            Id = GenerateElementId();
-            ElementName = _elementName;
-            ExtensionElements = new ExtensionElementsModel() { InitiatorCanComplete = new InitiatorCanCompleteModel(false) };
+            this.Id = GenerateElementId();
+            this.ElementName = _elementName;
+            this.ExtensionElements = new ExtensionElementsModel() { InitiatorCanComplete = new InitiatorCanCompleteModel(false) };
         }
 
         /// <summary>
@@ -31,9 +29,9 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// <param name="formProperties">表单属性</param>
         public UserTaskModel(string name, string activitiAssignee, params FormPropertyModel[] formProperties) : this()
         {
-            Name = name;
-            ActivitiAssignee = activitiAssignee;
-            ExtensionElements.FormProperties = formProperties;
+            this.Name = name;
+            this.ActivitiAssignee = activitiAssignee;
+            this.ExtensionElements.FormProperties = formProperties;
         }
 
         /// <summary>
@@ -42,11 +40,11 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// <param name="name">任务名称</param>
         /// <param name="activitiAssignee">待处理人</param>
         /// <param name="activitiFormKey">表单key</param>
-        public UserTaskModel(string name, string activitiAssignee, string activitiFormKey) : this()
+        public UserTaskModel(string name, string activitiAssignee, string activitiFormKey) : this() 
         {
-            Name = name;
-            ActivitiAssignee = activitiAssignee;
-            ActivitiFormKey = activitiFormKey;
+            this.Name = name;
+            this.ActivitiAssignee = activitiAssignee;
+            this.ActivitiFormKey = activitiFormKey;
         }
 
         /// <summary>
@@ -59,7 +57,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         public UserTaskModel(string name, string activitiAssignee, string activitiFormKey, params TaskListenerModel[] taskListeners)
             : this(name, activitiAssignee, activitiFormKey)
         {
-            ExtensionElements.TaskListeners = taskListeners;
+            this.ExtensionElements.TaskListeners = taskListeners;
         }
 
         /// <summary>
@@ -72,51 +70,55 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         public UserTaskModel(string name, string activitiAssignee, string activitiFormKey, MultiInstanceLoopCharacteristicsModel multiInstanceLoopCharacteristics)
             : this(name, activitiAssignee, activitiFormKey)
         {
-            MultiInstanceLoopCharacteristics = multiInstanceLoopCharacteristics;
+            this.MultiInstanceLoopCharacteristics = multiInstanceLoopCharacteristics;
         }
 
         /// <summary>
         /// 设置文档
         /// </summary>
         /// <param name="documentation">文档</param>
-        public void SetDocumentation(string documentation)
+        public UserTaskModel SetDocumentation(string documentation)
         {
-            Documentation = new DocumentationModel(documentation);
+            this.Documentation = new DocumentationModel(documentation);
+            return this;
         }
 
         /// <summary>
         /// 设置多实例特性
         /// </summary>
         /// <param name="multiInstanceLoopCharacteristics">多实例特性</param>
-        public void SetMultiInstanceLoopCharacteristics(MultiInstanceLoopCharacteristicsModel multiInstanceLoopCharacteristics)
+        public UserTaskModel SetMultiInstanceLoopCharacteristics(MultiInstanceLoopCharacteristicsModel multiInstanceLoopCharacteristics)
         {
-            MultiInstanceLoopCharacteristics = multiInstanceLoopCharacteristics;
+            this.MultiInstanceLoopCharacteristics = multiInstanceLoopCharacteristics;
+            return this;
         }
 
         /// <summary>
         /// 添加表单属性
         /// </summary>
         /// <param name="formProperties">表单属性</param>
-        public void AddFormProperties(params FormPropertyModel[] formProperties)
+        public UserTaskModel AddFormProperties(params FormPropertyModel[] formProperties)
         {
-            if (ExtensionElements == null)
+            if (this.ExtensionElements == null)
             {
-                ExtensionElements = new ExtensionElementsModel();
+                this.ExtensionElements = new ExtensionElementsModel();
             }
-            ExtensionElements.AddFormProperties(formProperties);
+            this.ExtensionElements.AddFormProperties(formProperties);
+            return this;
         }
 
         /// <summary>
         /// 添加任务监听器
         /// </summary>
         /// <param name="taskListeners">任务监听器</param>
-        public void AddTaskListeners(params TaskListenerModel[] taskListeners)
+        public UserTaskModel AddTaskListeners(params TaskListenerModel[] taskListeners)
         {
-            if (ExtensionElements == null)
+            if(this.ExtensionElements == null)
             {
-                ExtensionElements = new ExtensionElementsModel();
+                this.ExtensionElements = new ExtensionElementsModel();
             }
-            ExtensionElements.AddTaskListeners(taskListeners);
+            this.ExtensionElements.AddTaskListeners(taskListeners);
+            return this;
         }
 
         /// <summary>

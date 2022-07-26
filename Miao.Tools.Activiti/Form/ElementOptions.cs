@@ -1,7 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.Form
 {
@@ -22,8 +19,8 @@ namespace Miao.Tools.Activiti.Form
         /// <param name="name"></param>
         public ElementOptions(string id, string name)
         {
-            Id = id;
-            Name = name;
+            this.Id = id;
+            this.Name = name;
         }
 
         /// <summary>

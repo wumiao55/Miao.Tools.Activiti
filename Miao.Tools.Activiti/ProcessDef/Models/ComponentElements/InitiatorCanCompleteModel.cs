@@ -1,6 +1,4 @@
 ﻿using Miao.Tools.Activiti.Extensions;
-using System;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -17,9 +15,9 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="initiatorCanComplete">初始人是否可以完成</param>
         public InitiatorCanCompleteModel(bool initiatorCanComplete = false)
         {
-            ElementName = _elementName;
-            CData = true;
-            InnerText = initiatorCanComplete.ToLowerString();
+            this.ElementName = _elementName;
+            this.CData = true;
+            this.InnerText = initiatorCanComplete.ToLowerString();
         }
 
         //[ElementProperty("xmlns:modeler")]

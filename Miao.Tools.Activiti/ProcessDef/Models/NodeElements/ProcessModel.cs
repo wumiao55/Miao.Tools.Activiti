@@ -1,8 +1,6 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Extensions;
 using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
-using System;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
 {
@@ -16,10 +14,10 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// <summary>
         /// 构造方法
         /// </summary>
-        public ProcessModel()
+        public ProcessModel() 
         {
-            Id = GenerateElementId();
-            ElementName = _elementName;
+            this.Id = GenerateElementId();
+            this.ElementName = _elementName;
         }
 
         /// <summary>
@@ -29,30 +27,32 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// <param name="name">流程定义名称</param>
         public ProcessModel(string processDefKey, string name) : this()
         {
-            Id = processDefKey;
-            Name = name;
+            this.Id = processDefKey;
+            this.Name = name;
         }
 
         /// <summary>
         /// 设置文档
         /// </summary>
         /// <param name="documentation">文档内容</param>
-        public void SetDocumentation(string documentation)
+        public ProcessModel SetDocumentation(string documentation)
         {
-            Documentation = new DocumentationModel(documentation);
+            this.Documentation = new DocumentationModel(documentation);
+            return this;
         }
 
         /// <summary>
         /// 添加事件监听器
         /// </summary>
         /// <param name="eventListeners">事件监听器</param>
-        public void AddEventListeners(params EventListenerModel[] eventListeners)
+        public ProcessModel AddEventListeners(params EventListenerModel[] eventListeners)
         {
-            if (ExtensionElements == null)
+            if(this.ExtensionElements == null)
             {
-                ExtensionElements = new ExtensionElementsModel();
+                this.ExtensionElements = new ExtensionElementsModel();
             }
-            ExtensionElements.AddEventListeners(eventListeners);
+            this.ExtensionElements.AddEventListeners(eventListeners);
+            return this;
         }
 
         /// <summary>

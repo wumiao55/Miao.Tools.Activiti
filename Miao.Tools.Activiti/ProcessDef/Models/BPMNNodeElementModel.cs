@@ -1,6 +1,5 @@
-﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
-using System;
-using System.Text;
+﻿using System;
+using Miao.Tools.Activiti.ProcessDef.Attributes;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models
 {
@@ -15,9 +14,9 @@ namespace Miao.Tools.Activiti.ProcessDef.Models
         /// id
         /// </summary>
         [ElementProperty("id")]
-        public string Id
+        public string Id 
         {
-            get
+            get 
             {
                 return _id;
             }
@@ -26,7 +25,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models
                 if (!string.IsNullOrEmpty(value) &&
                     !IsValidNCName(value))
                 {
-                    throw new Exception($"'{GetType().Name} node id {value}' 不是 'NCName' 的有效值");
+                    throw new Exception($"'{this.GetType().Name} node id {value}' 不是 'NCName' 的有效值");
                 }
                 _id = value;
             }

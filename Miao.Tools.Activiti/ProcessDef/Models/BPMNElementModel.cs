@@ -36,7 +36,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models
         /// 生成元素唯一id
         /// </summary>
         /// <returns></returns>
-        protected string GenerateElementId()
+        protected static string GenerateElementId()
         {
             return $"sid-{Guid.NewGuid().ToString().ToUpper()}";
         }
@@ -46,7 +46,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        protected bool IsValidNCName(string value)
+        protected static bool IsValidNCName(string value)
         {
             /*
                NCName 以字母或下划线 (_) 字符开头，

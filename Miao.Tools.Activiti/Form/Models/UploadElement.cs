@@ -1,10 +1,6 @@
-﻿using Miao.Tools.Activiti.Extensions;
-using Miao.Tools.Activiti.Form;
+﻿using Newtonsoft.Json;
+using Miao.Tools.Activiti.Extensions;
 using Miao.Tools.Activiti.Form.Enums;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.Form.Models
 {
@@ -21,8 +17,8 @@ namespace Miao.Tools.Activiti.Form.Models
         /// </summary>
         public UploadElement()
         {
-            FieldType = _formFieldType.GetDescription();
-            Type = _formElementType.GetDescription();
+            this.FieldType = _formFieldType.GetDescription();
+            this.Type = _formElementType.GetDescription();
         }
 
         /// <summary>
@@ -34,12 +30,12 @@ namespace Miao.Tools.Activiti.Form.Models
         /// <param name="multiple"></param>
         public UploadElement(string id, string name, bool required, bool multiple) : this()
         {
-            Id = id;
-            OverrideId = true;
-            Name = name;
-            Required = required;
-            Placeholder = $"请上传{name}";
-            Params.Multiple = multiple;
+            this.Id = id;
+            this.OverrideId = true;
+            this.Name = name;
+            this.Required = required;
+            this.Placeholder = $"请上传{name}";
+            this.Params.Multiple = multiple;
         }
 
         /// <summary>

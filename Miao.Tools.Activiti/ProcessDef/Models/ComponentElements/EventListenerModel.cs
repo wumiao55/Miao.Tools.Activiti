@@ -1,8 +1,5 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -12,13 +9,13 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
     public class EventListenerModel : BPMNElementModel
     {
         private static readonly string _elementName = "activiti:eventListener";
-
+        
         /// <summary>
         /// 构造方法
         /// </summary>
         public EventListenerModel()
         {
-            ElementName = _elementName;
+            this.ElementName = _elementName;
         }
 
         /// <summary>
@@ -28,8 +25,8 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="delegateExpression">委托表达式, 如: ${eventListener}</param>
         public EventListenerModel(ListenerType listenerType, string delegateExpression) : this()
         {
-            Events = listenerType.ToString();
-            DelegateExpression = delegateExpression;
+            this.Events = listenerType.ToString();
+            this.DelegateExpression = delegateExpression;
         }
 
         /// <summary>

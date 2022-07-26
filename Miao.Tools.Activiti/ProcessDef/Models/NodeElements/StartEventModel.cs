@@ -1,8 +1,6 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Extensions;
 using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
-using System;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
 {
@@ -17,11 +15,11 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// <summary>
         /// 构造方法
         /// </summary>
-        public StartEventModel()
+        public StartEventModel() 
         {
-            Id = GenerateElementId();
-            ElementName = _elementName;
-            Name = _name;
+            this.Id = GenerateElementId();
+            this.ElementName = _elementName;
+            this.Name = _name;
         }
 
         /// <summary>
@@ -30,42 +28,45 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// <param name="activitiFormKey">表单key</param>
         public StartEventModel(string activitiFormKey) : this()
         {
-            ActivitiFormKey = activitiFormKey;
+            this.ActivitiFormKey = activitiFormKey;
         }
 
         /// <summary>
         /// 设置文档
         /// </summary>
         /// <param name="documentation">文档</param>
-        public void SetDocumentation(string documentation)
+        public StartEventModel SetDocumentation(string documentation)
         {
-            Documentation = new DocumentationModel(documentation);
+            this.Documentation = new DocumentationModel(documentation);
+            return this;
         }
 
         /// <summary>
         /// 添加表单属性
         /// </summary>
         /// <param name="formProperties">表单属性</param>
-        public void AddFormProperties(params FormPropertyModel[] formProperties)
+        public StartEventModel AddFormProperties(params FormPropertyModel[] formProperties)
         {
-            if (ExtensionElements == null)
+            if (this.ExtensionElements == null)
             {
-                ExtensionElements = new ExtensionElementsModel();
+                this.ExtensionElements = new ExtensionElementsModel();
             }
-            ExtensionElements.AddFormProperties(formProperties);
+            this.ExtensionElements.AddFormProperties(formProperties);
+            return this;
         }
 
         /// <summary>
         /// 添加执行监听器
         /// </summary>
         /// <param name="executionListeners">添加执行监听器</param>
-        public void AddExecutionListeners(params ExecutionListenerModel[] executionListeners)
+        public StartEventModel AddExecutionListeners(params ExecutionListenerModel[] executionListeners)
         {
-            if (ExtensionElements == null)
+            if (this.ExtensionElements == null)
             {
-                ExtensionElements = new ExtensionElementsModel();
+                this.ExtensionElements = new ExtensionElementsModel();
             }
-            ExtensionElements.AddExecutionListeners(executionListeners);
+            this.ExtensionElements.AddExecutionListeners(executionListeners);
+            return this;
         }
 
         /// <summary>

@@ -1,7 +1,5 @@
-﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using Miao.Tools.Activiti.ProcessDef.Attributes;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -17,7 +15,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// </summary>
         public ExtensionElementsModel()
         {
-            ElementName = _elementName;
+            this.ElementName = _elementName;
         }
 
         /// <summary>
@@ -26,7 +24,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="executionListeners">执行监听器</param>
         public ExtensionElementsModel(params ExecutionListenerModel[] executionListeners) : this()
         {
-            ExecutionListeners = executionListeners;
+            this.ExecutionListeners = executionListeners;
         }
 
         /// <summary>
@@ -35,7 +33,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="eventListeners">事件监听器</param>
         public ExtensionElementsModel(params EventListenerModel[] eventListeners) : this()
         {
-            EventListeners = eventListeners;
+            this.EventListeners = eventListeners;
         }
 
         /// <summary>
@@ -61,6 +59,12 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// </summary>
         [ChildElement]
         public IEnumerable<FormPropertyModel> FormProperties { get; set; }
+
+        /// <summary>
+        /// 字段集合
+        /// </summary>
+        [ChildElement]
+        public IEnumerable<ActivitiFieldModel> ActivitiFields { get; set; }
 
         /// <summary>
         /// 初始人是否可以完成任务

@@ -1,10 +1,8 @@
-﻿using Miao.Tools.Activiti.Extensions;
-using Miao.Tools.Activiti.Form;
-using Miao.Tools.Activiti.Form.Enums;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Miao.Tools.Activiti.Extensions;
+using Miao.Tools.Activiti.Form.Enums;
+
 
 namespace Miao.Tools.Activiti.Form.Models
 {
@@ -21,8 +19,8 @@ namespace Miao.Tools.Activiti.Form.Models
         /// </summary>
         public DropdownElement()
         {
-            FieldType = _formFieldType.GetDescription();
-            Type = _formElementType.GetDescription();
+            this.FieldType = _formFieldType.GetDescription();
+            this.Type = _formElementType.GetDescription();
         }
 
         /// <summary>
@@ -32,18 +30,18 @@ namespace Miao.Tools.Activiti.Form.Models
         /// <param name="name"></param>
         /// <param name="required"></param>
         /// <param name="options"></param>
-        public DropdownElement(string id, string name, bool required, List<ElementOptions> options) : this()
+        public DropdownElement(string id, string name, bool required, List<ElementOptions> options) : this() 
         {
-            Id = id;
-            OverrideId = true;
-            Name = name;
-            Required = required;
-            Placeholder = $"请选择{name}";
-            Options = options;
-            if (options != null && options.Count > 0)
+            this.Id = id;
+            this.OverrideId = true;
+            this.Name = name;
+            this.Required = required;
+            this.Placeholder = $"请选择{name}";
+            this.Options = options;
+            if(options != null && options.Count > 0)
             {
-                HasEmptyValue = true;
-                Value = options[0].Id;
+                this.HasEmptyValue = true;
+                this.Value = options[0].Id;
             }
         }
 

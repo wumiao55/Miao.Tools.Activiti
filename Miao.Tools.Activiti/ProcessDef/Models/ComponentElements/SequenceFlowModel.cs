@@ -1,7 +1,5 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Extensions;
-using System;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -15,10 +13,10 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <summary>
         /// 构造方法
         /// </summary>
-        public SequenceFlowModel()
+        public SequenceFlowModel() 
         {
-            Id = GenerateElementId();
-            ElementName = _elementName;
+            this.Id = GenerateElementId();
+            this.ElementName = _elementName;
         }
 
         /// <summary>
@@ -29,9 +27,9 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="targetRef">目标</param>
         public SequenceFlowModel(string name, string sourceRef, string targetRef) : this()
         {
-            Name = name;
-            SourceRef = sourceRef;
-            TargetRef = targetRef;
+            this.Name = name;
+            this.SourceRef = sourceRef;
+            this.TargetRef = targetRef;
         }
 
         /// <summary>
@@ -44,7 +42,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         public SequenceFlowModel(string name, string sourceRef, string targetRef, string conditionExpression)
             : this(name, sourceRef, targetRef)
         {
-            ConditionExpression = new ConditionExpressionModel(conditionExpression);
+            this.ConditionExpression = new ConditionExpressionModel(conditionExpression);
         }
 
         /// <summary>
@@ -57,7 +55,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         public SequenceFlowModel(string name, string sourceRef, string targetRef, params ExecutionListenerModel[] executionListeners)
             : this(name, sourceRef, targetRef)
         {
-            ExtensionElements = new ExtensionElementsModel(executionListeners);
+            this.ExtensionElements = new ExtensionElementsModel(executionListeners);
         }
 
         /// <summary>
@@ -68,42 +66,45 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="targetRef">目标</param>
         /// <param name="conditionExpression">条件表达式, 如: ${AuditResult=='通过'} </param>
         /// <param name="executionListeners">执行监听器</param>
-        public SequenceFlowModel(string name, string sourceRef, string targetRef, string conditionExpression, params ExecutionListenerModel[] executionListeners)
+        public SequenceFlowModel(string name, string sourceRef, string targetRef, string conditionExpression, params ExecutionListenerModel[] executionListeners) 
             : this(name, sourceRef, targetRef)
         {
-            ConditionExpression = new ConditionExpressionModel(conditionExpression);
-            ExtensionElements = new ExtensionElementsModel(executionListeners);
+            this.ConditionExpression = new ConditionExpressionModel(conditionExpression);
+            this.ExtensionElements = new ExtensionElementsModel(executionListeners);
         }
 
         /// <summary>
         /// 设置文档
         /// </summary>
         /// <param name="documentation">文档</param>
-        public void SetDocumentation(string documentation)
+        public SequenceFlowModel SetDocumentation(string documentation)
         {
-            Documentation = new DocumentationModel(documentation);
+            this.Documentation = new DocumentationModel(documentation);
+            return this;
         }
 
         /// <summary>
         /// 设置条件表达式
         /// </summary>
         /// <param name="conditionExpression">条件表达式, 如: ${AuditResult=='通过'}</param>
-        public void SetConditionExpression(string conditionExpression)
+        public SequenceFlowModel SetConditionExpression(string conditionExpression)
         {
-            ConditionExpression = new ConditionExpressionModel(conditionExpression);
+            this.ConditionExpression = new ConditionExpressionModel(conditionExpression);
+            return this;
         }
 
         /// <summary>
         /// 添加执行监听器
         /// </summary>
         /// <param name="executionListeners">添加执行监听器</param>
-        public void AddExecutionListeners(params ExecutionListenerModel[] executionListeners)
+        public SequenceFlowModel AddExecutionListeners(params ExecutionListenerModel[] executionListeners)
         {
-            if (ExtensionElements == null)
+            if(this.ExtensionElements == null)
             {
-                ExtensionElements = new ExtensionElementsModel();
+                this.ExtensionElements = new ExtensionElementsModel();
             }
-            ExtensionElements.AddExecutionListeners(executionListeners);
+            this.ExtensionElements.AddExecutionListeners(executionListeners);
+            return this;
         }
 
         /// <summary>

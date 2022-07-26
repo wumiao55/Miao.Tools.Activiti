@@ -1,8 +1,6 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Extensions;
 using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
-using System;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
 {
@@ -19,31 +17,33 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// </summary>
         public EndEventModel()
         {
-            Id = GenerateElementId();
-            ElementName = _elementName;
-            Name = _name;
+            this.Id = GenerateElementId();
+            this.ElementName = _elementName;
+            this.Name = _name;
         }
 
         /// <summary>
         /// 设置文档
         /// </summary>
         /// <param name="documentation">文档</param>
-        public void SetDocumentation(string documentation)
+        public EndEventModel SetDocumentation(string documentation)
         {
-            Documentation = new DocumentationModel(documentation);
+            this.Documentation = new DocumentationModel(documentation);
+            return this;
         }
 
         /// <summary>
         /// 添加执行监听器
         /// </summary>
         /// <param name="executionListeners">添加执行监听器</param>
-        public void AddExecutionListeners(params ExecutionListenerModel[] executionListeners)
+        public EndEventModel AddExecutionListeners(params ExecutionListenerModel[] executionListeners)
         {
-            if (ExtensionElements == null)
+            if (this.ExtensionElements == null)
             {
-                ExtensionElements = new ExtensionElementsModel();
+                this.ExtensionElements = new ExtensionElementsModel();
             }
-            ExtensionElements.AddExecutionListeners(executionListeners);
+            this.ExtensionElements.AddExecutionListeners(executionListeners);
+            return this;
         }
 
         /// <summary>

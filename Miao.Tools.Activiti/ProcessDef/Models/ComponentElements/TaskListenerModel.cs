@@ -1,9 +1,6 @@
-﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
-using Miao.Tools.Activiti.Extensions;
+﻿using Miao.Tools.Activiti.Extensions;
+using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -19,7 +16,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// </summary>
         public TaskListenerModel()
         {
-            ElementName = _elementName;
+            this.ElementName = _elementName;
         }
 
         /// <summary>
@@ -29,8 +26,8 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="delegateExpression">委托表达式, 如: ${taskListener}</param>
         public TaskListenerModel(TaskListenerEventType eventType, string delegateExpression) : this()
         {
-            Event = eventType.GetDescription();
-            DelegateExpression = delegateExpression;
+            this.Event = eventType.GetDescription();
+            this.DelegateExpression = delegateExpression;
         }
 
         /// <summary>

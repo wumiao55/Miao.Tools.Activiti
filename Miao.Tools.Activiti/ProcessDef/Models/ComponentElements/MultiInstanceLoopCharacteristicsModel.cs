@@ -1,8 +1,5 @@
-﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
-using Miao.Tools.Activiti.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Miao.Tools.Activiti.Extensions;
+using Miao.Tools.Activiti.ProcessDef.Attributes;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -18,7 +15,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// </summary>
         public MultiInstanceLoopCharacteristicsModel()
         {
-            ElementName = _elementName;
+            this.ElementName = _elementName;
         }
 
         /// <summary>
@@ -29,9 +26,9 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="elementVariable">变量元素, 如: assignee</param>
         public MultiInstanceLoopCharacteristicsModel(bool isSequential, string collection, string elementVariable) : this()
         {
-            IsSequential = isSequential.ToLowerString();
-            Collection = collection;
-            ElementVariable = elementVariable;
+            this.IsSequential = isSequential.ToLowerString();
+            this.Collection = collection;
+            this.ElementVariable = elementVariable;
         }
 
         /// <summary>
@@ -43,19 +40,20 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="completionCondition">完成条件, 如: ${nrOfCompletedInstances/nrOfInstances >= 0.6 }</param>
         public MultiInstanceLoopCharacteristicsModel(bool isSequential, string collection, string elementVariable, string completionCondition) : this()
         {
-            IsSequential = isSequential.ToLowerString();
-            Collection = collection;
-            ElementVariable = elementVariable;
-            CompletionCondition = new CompletionConditionModel(completionCondition);
+            this.IsSequential = isSequential.ToLowerString();
+            this.Collection = collection;
+            this.ElementVariable = elementVariable;
+            this.CompletionCondition = new CompletionConditionModel(completionCondition);
         }
 
         /// <summary>
         /// 设置完成条件
         /// </summary>
         /// <param name="completionCondition">完成条件, 如: ${nrOfCompletedInstances/nrOfInstances >= 0.6 }</param>
-        public void SetCompletionCondition(string completionCondition)
+        public MultiInstanceLoopCharacteristicsModel SetCompletionCondition(string completionCondition)
         {
-            CompletionCondition = new CompletionConditionModel(completionCondition);
+            this.CompletionCondition = new CompletionConditionModel(completionCondition);
+            return this;
         }
 
         /// <summary>

@@ -1,9 +1,7 @@
-﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
+﻿using System.Collections.Generic;
 using Miao.Tools.Activiti.Extensions;
+using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
@@ -20,7 +18,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// </summary>
         public FormPropertyModel()
         {
-            ElementName = _elementName;
+            this.ElementName = _elementName;
         }
 
         /// <summary>
@@ -32,16 +30,16 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// <param name="required">是否必须</param>
         public FormPropertyModel(string id, string name, FormPropertyType formPropertyType, bool required = false) : this()
         {
-            Id = id;
-            Name = name;
-            Type = formPropertyType.GetDescription();
-            if (formPropertyType == FormPropertyType.Date)
+            this.Id = id;
+            this.Name = name;
+            this.Type = formPropertyType.GetDescription();
+            if(formPropertyType == FormPropertyType.Date)
             {
-                DatePattern = _defaultDatePattern;
+                this.DatePattern = _defaultDatePattern;
             }
             if (required)
             {
-                Required = required.ToLowerString();
+                this.Required = required.ToLowerString();
             }
         }
 

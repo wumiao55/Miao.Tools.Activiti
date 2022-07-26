@@ -1,15 +1,15 @@
-﻿using Miao.Tools.Activiti.Extensions;
-using Miao.Tools.Activiti.ProcessDef.Attributes;
-using Miao.Tools.Activiti.ProcessDef.Models;
-using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
-using Miao.Tools.Activiti.ProcessDef.Models.NodeElements;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Xml;
+using Miao.Tools.Activiti.Extensions;
+using Miao.Tools.Activiti.ProcessDef.Attributes;
+using Miao.Tools.Activiti.ProcessDef.Models;
+using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
+using Miao.Tools.Activiti.ProcessDef.Models.NodeElements;
 
 namespace Miao.Tools.Activiti.ProcessDef.Extensions
 {
@@ -38,7 +38,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
         /// <returns></returns>
         public static XmlElement CreateElement(this XmlDocument xmldoc, BPMNElementModel elementModel)
         {
-            if (elementModel == null)
+            if(elementModel == null)
             {
                 return null;
             }
@@ -86,14 +86,14 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
                 if (elementProperty != null && !string.IsNullOrEmpty(elementProperty.Name))
                 {
                     // 非必需的属性
-                    if (!elementProperty.Required && propertyValue == null)
+                    if(!elementProperty.Required && propertyValue == null)
                     {
                         continue;
                     }
 
                     string propertyName = elementProperty.Name;
                     // 处理元素属性命名空间
-                    if (propertyName.Contains(":"))
+                    if (propertyName.Contains(':'))
                     {
                         string elementAttributeNamespace = propertyName.Split(new char[] { ':' })[0];
                         string elementAttributeName = propertyName.Split(new char[] { ':' })[1];
@@ -108,13 +108,13 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
 
                 //处理ChildElementAttribute特性
                 ChildElementAttribute childElementAttribute = Attribute.GetCustomAttribute(pi, typeof(ChildElementAttribute)) as ChildElementAttribute;
-                if (childElementAttribute == null || propertyValue == null)
+                if(childElementAttribute == null || propertyValue == null)
                 {
                     continue;
                 }
                 if (propertyValue.GetType().IsSubclassOf(typeof(BPMNElementModel)))
                 {
-                    var childElement = xmldoc.CreateElement((BPMNElementModel)propertyValue);
+                    var childElement = CreateElement(xmldoc, (BPMNElementModel)propertyValue);
                     element.AppendChild(childElement);
                 }
                 else if (typeof(IEnumerable).IsAssignableFrom(propertyValue.GetType()))
@@ -125,7 +125,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
                         var currentType = enumerator.Current.GetType();
                         if (currentType.IsSubclassOf(typeof(BPMNElementModel)))
                         {
-                            var childElement = xmldoc.CreateElement((BPMNElementModel)enumerator.Current);
+                            var childElement = CreateElement(xmldoc, (BPMNElementModel)enumerator.Current);
                             element.AppendChild(childElement);
                         }
                     }
@@ -174,7 +174,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
             {
                 throw new Exception("流程定义节点集合中第一个元素必须是'StartEventModel'实例");
             }
-
+            
             // version
             XmlDeclaration xmldec = xmldoc.CreateXmlDeclaration("1.0", "UTF-8", null);
             xmldoc.AppendChild(xmldec);

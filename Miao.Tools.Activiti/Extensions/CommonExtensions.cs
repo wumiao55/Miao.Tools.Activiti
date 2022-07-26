@@ -49,22 +49,22 @@ namespace Miao.Tools.Activiti.Extensions
         /// 对象属性判空
         /// </summary>
         /// <param name="obj"></param>
-        public static void CheckPropertiesNotNull(this object obj)
+        public static void CheckPropertiesNotNull(this object obj) 
         {
             foreach (var property in obj.GetType().GetProperties())
             {
                 var attr = Attribute.GetCustomAttribute(property, typeof(RequiredAttribute), false) as RequiredAttribute;
-                if (attr == null)
+                if(attr == null)
                 {
                     continue;
                 }
 
                 var objValue = property.GetValue(obj, null);
-                if (objValue == null)
+                if(objValue == null)
                 {
                     throw new Exception($"'{property.Name}' is required.{attr.ErrorMessage}");
                 }
-                if (!attr.AllowEmptyStrings && objValue.ToString() == "")
+                if(!attr.AllowEmptyStrings && objValue.ToString() == "")
                 {
                     throw new Exception($"'{property.Name}' is required.{attr.ErrorMessage}");
                 }

@@ -1,8 +1,6 @@
-﻿using Miao.Tools.Activiti.Form.Models;
+﻿using System.Collections.Generic;
+using Miao.Tools.Activiti.Form.Models;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.Form
 {
@@ -19,9 +17,9 @@ namespace Miao.Tools.Activiti.Form
         /// <param name="version"></param>
         public ActivitiForm(string name, string key, int version)
         {
-            Name = name;
-            Key = key;
-            Version = version;
+            this.Name = name;
+            this.Key = key;
+            this.Version = version;
         }
 
         /// <summary>
@@ -30,7 +28,7 @@ namespace Miao.Tools.Activiti.Form
         /// <param name="formElements"></param>
         public void AddFields(params BaseFormElement[] formElements)
         {
-            Fields.AddRange(formElements);
+            this.Fields.AddRange(formElements);
         }
 
         /// <summary>
@@ -39,7 +37,7 @@ namespace Miao.Tools.Activiti.Form
         /// <param name="outcomes"></param>
         public void AddOutcomes(params ElementOptions[] outcomes)
         {
-            Outcomes.AddRange(outcomes);
+            this.Outcomes.AddRange(outcomes);
         }
 
         /// <summary>

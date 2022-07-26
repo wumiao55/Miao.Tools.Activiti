@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
+﻿namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
 {
     /// <summary>
     /// xml element: definitions
@@ -15,7 +12,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.ComponentElements
         /// </summary>
         public DefinitionsModel()
         {
-            ElementName = _elementName;
+            this.ElementName = _elementName;
         }
     }
 }

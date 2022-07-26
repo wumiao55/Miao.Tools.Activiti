@@ -1,8 +1,6 @@
-﻿using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
 
 namespace Miao.Tools.Activiti.ProcessDef.Extensions
 {
@@ -16,13 +14,13 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
         /// </summary>
         /// <param name="extensionElementsModel"></param>
         /// <param name="executionListeners"></param>
-        public static void AddExecutionListeners(this ExtensionElementsModel extensionElementsModel, params ExecutionListenerModel[] executionListeners)
+        public static ExtensionElementsModel AddExecutionListeners(this ExtensionElementsModel extensionElementsModel, params ExecutionListenerModel[] executionListeners)
         {
-            if (extensionElementsModel == null || executionListeners == null)
+            if(extensionElementsModel == null || executionListeners == null)
             {
-                return;
+                return extensionElementsModel;
             }
-            if (extensionElementsModel.ExecutionListeners == null)
+            if(extensionElementsModel.ExecutionListeners == null)
             {
                 extensionElementsModel.ExecutionListeners = new List<ExecutionListenerModel>(executionListeners);
             }
@@ -30,6 +28,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
             {
                 extensionElementsModel.ExecutionListeners = extensionElementsModel.ExecutionListeners.Concat(executionListeners);
             }
+            return extensionElementsModel;
         }
 
         /// <summary>
@@ -37,13 +36,13 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
         /// </summary>
         /// <param name="extensionElementsModel"></param>
         /// <param name="eventListeners"></param>
-        public static void AddEventListeners(this ExtensionElementsModel extensionElementsModel, params EventListenerModel[] eventListeners)
+        public static ExtensionElementsModel AddEventListeners(this ExtensionElementsModel extensionElementsModel, params EventListenerModel[] eventListeners)
         {
-            if (extensionElementsModel == null || eventListeners == null)
+            if(extensionElementsModel == null || eventListeners == null)
             {
-                return;
+                return extensionElementsModel;
             }
-            if (extensionElementsModel.EventListeners == null)
+            if(extensionElementsModel.EventListeners == null)
             {
                 extensionElementsModel.EventListeners = new List<EventListenerModel>(eventListeners);
             }
@@ -51,20 +50,21 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
             {
                 extensionElementsModel.EventListeners = extensionElementsModel.EventListeners.Concat(eventListeners);
             }
+            return extensionElementsModel;
         }
-
+    
         /// <summary>
         /// 添加任务监听器
         /// </summary>
         /// <param name="extensionElementsModel"></param>
         /// <param name="taskListeners"></param>
-        public static void AddTaskListeners(this ExtensionElementsModel extensionElementsModel, params TaskListenerModel[] taskListeners)
+        public static ExtensionElementsModel AddTaskListeners(this ExtensionElementsModel extensionElementsModel, params TaskListenerModel[] taskListeners)
         {
-            if (extensionElementsModel == null || taskListeners == null)
+            if(extensionElementsModel == null || taskListeners == null)
             {
-                return;
+                return extensionElementsModel;
             }
-            if (extensionElementsModel.TaskListeners == null)
+            if(extensionElementsModel.TaskListeners == null)
             {
                 extensionElementsModel.TaskListeners = new List<TaskListenerModel>(taskListeners);
             }
@@ -72,6 +72,7 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
             {
                 extensionElementsModel.TaskListeners = extensionElementsModel.TaskListeners.Concat(taskListeners);
             }
+            return extensionElementsModel;
         }
 
         /// <summary>
@@ -79,13 +80,13 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
         /// </summary>
         /// <param name="extensionElementsModel"></param>
         /// <param name="formProperties"></param>
-        public static void AddFormProperties(this ExtensionElementsModel extensionElementsModel, params FormPropertyModel[] formProperties)
+        public static ExtensionElementsModel AddFormProperties(this ExtensionElementsModel extensionElementsModel, params FormPropertyModel[] formProperties)
         {
-            if (extensionElementsModel == null || formProperties == null)
+            if(extensionElementsModel == null || formProperties == null)
             {
-                return;
+                return extensionElementsModel;
             }
-            if (extensionElementsModel.FormProperties == null)
+            if(extensionElementsModel.FormProperties == null)
             {
                 extensionElementsModel.FormProperties = new List<FormPropertyModel>(formProperties);
             }
@@ -93,6 +94,30 @@ namespace Miao.Tools.Activiti.ProcessDef.Extensions
             {
                 extensionElementsModel.FormProperties = extensionElementsModel.FormProperties.Concat(formProperties);
             }
+            return extensionElementsModel;
+        }
+
+        /// <summary>
+        /// 添加字段
+        /// </summary>
+        /// <param name="extensionElementsModel"></param>
+        /// <param name="activitiFields"></param>
+        /// <returns></returns>
+        public static ExtensionElementsModel AddActivitiFields(this ExtensionElementsModel extensionElementsModel, params ActivitiFieldModel[] activitiFields)
+        {
+            if(extensionElementsModel == null || activitiFields == null)
+            {
+                return extensionElementsModel;
+            }
+            if(extensionElementsModel.ActivitiFields == null)
+            {
+                extensionElementsModel.ActivitiFields = new List<ActivitiFieldModel>();
+            }
+            else
+            {
+                extensionElementsModel.ActivitiFields = extensionElementsModel.ActivitiFields.Concat(activitiFields);
+            }
+            return extensionElementsModel;
         }
     }
 }

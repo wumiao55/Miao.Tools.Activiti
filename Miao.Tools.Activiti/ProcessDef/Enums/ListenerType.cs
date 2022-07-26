@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Miao.Tools.Activiti.ProcessDef.Enums
+﻿namespace Miao.Tools.Activiti.ProcessDef.Enums
 {
     /// <summary>
     /// 监听类型

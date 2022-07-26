@@ -1,7 +1,5 @@
 ﻿using Miao.Tools.Activiti.ProcessDef.Attributes;
 using Miao.Tools.Activiti.ProcessDef.Models.ComponentElements;
-using System;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
 {
@@ -15,19 +13,20 @@ namespace Miao.Tools.Activiti.ProcessDef.Models.NodeElements
         /// <summary>
         /// 构造方法
         /// </summary>
-        public ExclusiveGatewayModel()
+        public ExclusiveGatewayModel() 
         {
-            Id = GenerateElementId();
-            ElementName = _elementName;
+            this.Id = GenerateElementId();
+            this.ElementName = _elementName;
         }
 
         /// <summary>
         /// 设置文档
         /// </summary>
         /// <param name="documentation">文档</param>
-        public void SetDocumentation(string documentation)
+        public ExclusiveGatewayModel SetDocumentation(string documentation)
         {
-            Documentation = new DocumentationModel(documentation);
+            this.Documentation = new DocumentationModel(documentation);
+            return this;
         }
 
         /// <summary>

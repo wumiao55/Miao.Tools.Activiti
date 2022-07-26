@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Miao.Tools.Activiti.ProcessDef.Attributes
 {
@@ -17,8 +15,8 @@ namespace Miao.Tools.Activiti.ProcessDef.Attributes
         /// <param name="required"></param>
         public ElementPropertyAttribute(string name, bool required = true)
         {
-            Name = name;
-            Required = required;
+            this.Name = name;
+            this.Required = required;
         }
 
         /// <summary>
